@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -13,7 +12,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin - AutoT</title>
+    <title>Student - AutoT</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -159,36 +158,37 @@ session_start();
 
         <div class="navbar-header">
             <?php
-
-
             if(isset($_SESSION['User'])){
                 ?>
                 <h3 style="font-size: 100%; color: ghostwhite;margin-top: 10px; ">
                     <?php
+                    $user=$_SESSION['User'];
                     echo $_SESSION['User'].'<br/>';
+
+
                     ?>
 
                 </h3>
                 <?php
-            }else{
-
-                header("Location: http://localhost/timetable/teacher.php");
             }
+
+
+
             ?>
         </div>
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="http://localhost/timetable/is/Welcome_teacher.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    <a href="http://localhost/timetable/is/Welcome.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                 </li>
                 <h3 class="menu-title">Student</h3><!-- /.menu-title -->
 
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> </i>My Details</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-table"></i><a href="View_teacherdetails.php">View my Details</a></li>
-                        <li><i class="fa fa-table"></i><a href="edit_teacherdetails.php">Edit my details</a></li>
+                        <li><i class="fa fa-table"></i><a href="View_details.php">View my Details</a></li>
+                        <li><i class="fa fa-table"></i><a href="edit_details.php">Edit my details</a></li>
 
                     </ul>
 
@@ -234,7 +234,7 @@ session_start();
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
                         <?php
-                        echo ' <a href="logout_teacher.php?logout">Logout </a>';
+                        echo ' <a href="logout.php?logout">Logout </a>';
                         ?>
                     </ol>
                 </div>
@@ -246,52 +246,54 @@ session_start();
         <div class="animated fadeIn">
             <div class="tab">
                 <button class="tablinks" onclick="openCity(event, 'London')"id="defaultOpen" >Change Email</button>
-                <button class="tablinks" onclick="openCity(event, 'Tokyo')">Change Password</button>
-                <button class="tablinks" onclick="openCity(event, 'Nairobi')">Change Alias</button>
-           
+                <button class="tablinks" onclick="openCity(event, 'Tokyo')">Change Class ID</button>
+                <button class="tablinks" onclick="openCity(event, 'Nairobi')">Change Password</button>
+
             </div>
 
             <div id="London" class="tabcontent">
-                <form action="sign_teacherdetails.php" class="container" method="post">
+                <form action="sign_details.php" class="container" method="post">
                     <h1 id="p01"> Change Email </h1>
                     <label for="Previous Email"><b>Previous Email</b></label>
                     <input type="text" placeholder=" Please enter Previous Email" name="Email" autofocus required>
                     </br>
                     <label for="New Email"><b>New Email</b></label>
                     <input type="text" placeholder="Please Enter New email" name="email" required>
-                    <button type="submit" class="btn">Submit</button>
+                    <button type="submit" onclick="myFunction()" class="btn">Submit</button>
                     <h3 style="font-size: 130%; color: ghostwhite;margin-top: 40px;">
                         After Successful change of email
                         Please LOGIN again with the new email in order to view your details
                     </h3>
                 </form>
+
+
+
+
             </div>
 
 
             <div id="Tokyo" class="tabcontent">
-                <form action="sign_teacherdetails2.php" class="container" method="post">
+                <form action="sign_details2.php" class="container" method="post">
+                    <h1 id="p01"> Change ClassID </h1>
+                    <label for="Email"><b>Email Address</b></label>
+                    <input type="text" placeholder="Enter Email Address" name="Email" required>
+                    <label for="class_id"><b>New ID</b></label>
+                    <textarea name="class_id" id="textarea-input" rows="1" placeholder="Please input ID" class="form-control"></textarea>
+                    <button type="submit" onclick="myFunction()" class="btn">Submit</button>
+                </form>
+            </div>
+
+            <div id="Nairobi" class="tabcontent">
+                <form action="sign_details3.php" class="container" method="post">
                     <h1 id="p01"> Change Password </h1>
                     <label for="Email"><b>Email Address</b></label>
                     <input type="text" placeholder="Enter Email Address" name="Email" required>
                     <label for="password"><b>New Password</b></label>
                     <input type="password" id="password" name="password" placeholder="Please input Password" class="form-control" required>
-                    <div class="col-12 col-md-9"><input type="checkbox" onclick="myFunction()">Show Password</div>
-                    <button type="submit" class="btn">Submit</button>
+                    <div class="col-12 col-md-9"><input type="checkbox" onclick="myFunction3()">Show Password</div>
+                    <button type="submit" onclick="myFunction()" class="btn">Submit</button>
                 </form>
             </div>
-
-            <div id="Nairobi" class="tabcontent">
-                <form action="sign_teacherdetails3.php" class="container" method="post">
-                    <h1 id="p01">  Alias </h1>
-                    <label for="Previous Email"><b> Email</b></label>
-                    <input type="text" placeholder=" Please enter  Email" name="Email" autofocus required>
-                    </br>
-                    <label for="New ID"><b>New Alias</b></label>
-                    <input type="text" placeholder="Please Enter New Alias" name="Alias" required>
-                    <button type="submit" onclick="myFunction2()" class="btn">Submit</button>
-                </form>
-            </div>
-
 
 
 
@@ -300,16 +302,7 @@ session_start();
 
             <!-- Right Panel -->
 
-            <script>
-                function myFunction() {
-                    var x = document.getElementById("password");
-                    if (x.type === "password") {
-                        x.type = "text";
-                    } else {
-                        x.type = "password";
-                    }
-                }
-            </script>
+
             <script>
                 function openCity(evt, cityName) {
                     var i, tabcontent, tablinks;
@@ -328,6 +321,29 @@ session_start();
                 // Get the element with id="defaultOpen" and click on it
                 document.getElementById("defaultOpen").click();
             </script>
+            <script>
+                function myFunction() {
+                    var txt;
+                    if (confirm("Are you sure you want to edit your details?")) {
+                        txt = "You pressed OK!";
+                    } else {
+                        txt = "You pressed Cancel!";
+                    }
+                    document.getElementById("demo").innerHTML = txt;
+                }
+            </script>
+
+            <script>
+                function myFunction3() {
+                    var x = document.getElementById("password");
+                    if (x.type === "password") {
+                        x.type = "text";
+                    } else {
+                        x.type = "password";
+                    }
+                }
+            </script>
+
             <script src="vendors/jquery/dist/jquery.min.js"></script>
             <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
 
