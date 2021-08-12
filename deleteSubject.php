@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
@@ -17,23 +16,61 @@
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
 
+
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="vendors/jqvmap/dist/jqvmap.min.css">
-
 
     <link rel="stylesheet" href="assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
+    <style>
+        #message {
+            display:none;
+            background: #f1f1f1;
+            color: #000;
+            position: absolute;
+            padding: 20px;
+            margin-top: 40px;
+            margin-left:510px;
+            width:75%;
+        }
+
+        #message p {
+            padding: 10px 35px;
+            font-size: 18px;
+        }
+
+        /* Add a green text color and a checkmark when the requirements are right */
+        .valid {
+            color: green;
+        }
+
+        .valid:before {
+            position: relative;
+            left: -35px;
+            content: "✔";
+        }
+
+        /* Add a red text color and an "x" when the requirements are wrong */
+        .invalid {
+            color: red;
+        }
+
+        .invalid:before {
+            position: relative;
+            left: -35px;
+            content: "✖";
+
+        }
+    </style>
+
 </head>
 
 <body>
-<form action="Add.php" method="POST"
-
 <!-- Left Panel -->
 
 <aside id="left-panel" class="left-panel">
@@ -41,8 +78,8 @@
 
         <div class="navbar-header">
             <?php
-            session_start();
 
+session_start();
             if(isset($_SESSION['admin'])){
                 ?>
                 <h3 style="font-size: 100%; color: ghostwhite;margin-top: 10px;">
@@ -183,10 +220,6 @@
 </aside><!-- /#left-panel -->
 
 <!-- Left Panel -->
-<script src="vendors/jquery/dist/jquery.min.js"></script>
-<script src="vendors/popper.js/dist/umd/popper.min.js"></script>
-<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="assets/js/main.js"></script>
 
 <!-- Right Panel -->
 
@@ -204,91 +237,84 @@
             <div class="page-header float-right">
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
-                        <?php
-                        echo ' <a href="admin_logout.php">Logout </a>';
-                        ?>
+                        <li><a href="Admin.php">Dashboard</a></li>
+                        <li><a href="Admin.php">Subject</a></li>
+                        <li class="active">Delete Subject</li>
+                        <li><a href="admin_logout.php">Logout </a></li>
                     </ol>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="content mt-3">
         <div class="animated fadeIn">
+            <form action="deleteS.php" method="POST" onsubmit="alert('Thanks for Subscribing');>
+                                            <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Delete Student </strong>
+                </div>
+                <div class="card-body card-block">
+                    <div action="" method="post" enctype="multipart/form-data" class="form-horizontal">
 
-            <div class="ui-typography">
-                <div class="row">
-                    <div class="col-md-12">
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="CC-input" class=" form-control-label">Course Code</label></div>
+                            <div class="col-12 col-md-9"><input type="CC" id="CC" name="CC" placeholder="Enter Course Code" class="form-control" required="true"><small class="help-block form-text"></small></div>
+                        </div>
 
-
-                        <div class="card">
-                            <div class="card-header">
-
-
-                            </div>
-
-                            <div class="card-body">
-
-                                <div class="typo-headers">
-                                    <h1 class="pb-2 display-4">Welcome to your Adminstration Panel!</h1>
-
-                                </div>
-
-
-
-                                <div class="typo-articles">
+                        <div class="row form-group">
+                            <div class="col col-md-3"><label for="SN-input" class=" form-control-label">Subject Name</label></div>
+                            <div class="col-12 col-md-9"><input type="SN" id="SN" name="SN" placeholder="Subject Name" class="form-control" required="true"><small class="help-block form-text"></small></div>
+                        </div>
 
 
-                                    <div class="row">
-
-                                    </div>
-
-                                    <div class="col-md-6">
 
 
-                                    </div>
-                                </div>
-                            </div>
 
+
+
+
+
+
+                        <div class="card-footer">
+                            <button type="submit" onclick="myFunction()" class="btn btn-primary btn-sm">
+                                <i class="fa fa-dot-circle-o"></i> Submit
+                            </button>
+                            <button type="reset" class="btn btn-danger btn-sm">
+                                <i class="fa fa-ban"></i> Reset
+                            </button>
                         </div>
                     </div>
-
-
                 </div>
             </div>
-        </div>
+
+            </form>
+
+            <!-- Right Panel -->
 
 
+            <script>
+                function myFunction() {
+                    var txt;
+                    if (confirm("Are you sure you want to delete the above Subject?")) {
+                        txt = "You pressed OK!";
+                    } else {
+                        txt = "You pressed Cancel!";
+                    }
+                    document.getElementById("demo").innerHTML = txt;
+                }
+            </script>
 
-</div><!-- .animated -->
-</div><!-- .content -->
 
+            <script src="vendors/jquery/dist/jquery.min.js"></script>
+            <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
 
-<script src="vendors/chart.js/dist/Chart.bundle.min.js"></script>
-<script src="js/dashboard.js"></script>
-<script src="js/widgets.js"></script>
-<script src="vendors/jqvmap/dist/jquery.vmap.min.js"></script>
-<script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-<script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-<script>
-    (function($) {
-        "use strict";
+            <script src="vendors/jquery-validation/dist/jquery.validate.min.js"></script>
+            <script src="vendors/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 
-        jQuery('#vmap').vectorMap({
-            map: 'world_en',
-            backgroundColor: null,
-            color: '#ffffff',
-            hoverOpacity: 0.7,
-            selectedColor: '#1de9b6',
-            enableZoom: true,
-            showTooltip: true,
-            values: sample_data,
-            scaleColors: ['#1de9b6', '#03a9f5'],
-            normalizeFunction: 'polynomial'
-        });
-    })(jQuery);
-</script>
-
+            <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+            <script src="assets/js/main.js"></script>
+            </form>
 </body>
-
 </html>
-
