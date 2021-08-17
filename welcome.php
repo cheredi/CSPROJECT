@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Admin - AutoT</title>
+    <title>Student- AutoT</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -92,7 +92,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> </i>Timetable</a>
                     <ul class="sub-menu children dropdown-menu">
 
-                        <li><i class="fa fa-table"></i><a href="#">View Timetable</a></li>
+                        <li><i class="fa fa-table"></i><a href="studentView.php">View Timetable</a></li>
 
 
                     </ul>

@@ -18,15 +18,12 @@ body, html {
 }
 .bg-img {
   /* The image used */
-  background-image: url("images/school2.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    height: 100%;
-    width:100%;
-
-
+  background-image: url("wp2036897-books-wallpapers.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  height:100%;
+  width:100%;
+  
 }
 /* Add styles to the form container */
 .container {
@@ -44,7 +41,7 @@ body, html {
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password], input[type=int],input[type=email]{
+input[type=text], input[type=password], input[type=int]{
   width: 100%;
   padding: 10px;
   margin: 5px 0 7px 0;
@@ -52,7 +49,7 @@ input[type=text], input[type=password], input[type=int],input[type=email]{
   background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=int], input[type=password]:focus,input[type=email]:focus {
+input[type=text]:focus, input[type=int], input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -128,23 +125,25 @@ h4{
 <div class="bg-img">
   <form action="sign.php" class="container" method="post">
   <h1 id="p01"> Sign up </h1>
-
-      <label for="Username"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="Username" required>
-
+    <label for="FirstName"><b>First Name</b></label>
+    <input type="text" placeholder="Enter First Name" name="FirstName" autofocus required>
+	
+	<label for="LastName"><b>Last Name</b></label>
+    <input type="text" placeholder="Enter Last Name" name="LastName" required>
+	
 	<label for="Email"><b>Email Address</b></label>
-    <input type="email" placeholder="Enter Email Address" name="Email" required>
+    <input type="text" placeholder="Enter Email Address" name="Email" required>
 
-      <label for="StudentID"><b>StudentID</b></label>
-      <input type="text" placeholder="Enter Student ID" name="StudentID" required>
+    <label for="PhoneNumber"><b>Phone Number</b></label>
+    <input type="int" maxlength="15 " placeholder="+254" name="PhoneNumber" required>
+	 
+	<label for="Username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="Username" required>
 
-      <label for="ClassID"><b>ClassID</b></label>
-      <input type="text" placeholder="Enter Class ID" name="ClassID" required>
-
-      <label for="Password">Password</label>
+    <label for="Password">Password</label>
     <input type="password" id="Password" placeholder="Create Password" name="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+	
     <input type="checkbox" onclick="myFunction()">Show Password
-
     <button type="submit" class="btn">Sign up</button>
 	<h4>Already have an account? <a href="isl.php"> Login</a></h4>
 	
@@ -219,8 +218,6 @@ myInput.onkeyup = function() {
   }
 }
 </script>
-<script src="assets/js/sweetalert.min.js"></script>
-
 <script>
 function myFunction() {
   var x = document.getElementById("Password");

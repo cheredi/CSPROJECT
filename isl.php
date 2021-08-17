@@ -1,8 +1,4 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
-
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +20,7 @@ body, html {
 
 .bg-img {
   /* The image used */
-  background-image: url("images/school.jpg");
+  background-image: url("wp2036953-books-wallpapers.jpg");
 
 
   /* Center and scale the image nicely */
@@ -93,27 +89,13 @@ h4{
 </head>
 <body>
 
-<?php
-if(isset($_SESSION['status'])){
-    ?>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Success!!</strong>
-        <?php echo $_SESSION['status']; ?>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    <?php
-    unset($_SESSION['status']);
-}
-?>
 
 <div class="bg-img">
   <form action="login.php" class="container" method="post">
-     <h1 id="p01"> Student Login</h1>
+     <h1 id="p01"> Login</h1>
 
-    <label for="Email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="Email" required>
+    <label for="Username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="Username" required>
 
     <label for="Password"><b>Password</b></label>
     <input type="Password" placeholder="Enter Password" name="Password" required>

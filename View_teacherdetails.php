@@ -150,6 +150,8 @@ if(isset($_SESSION['User'])){
             <th>Teacher Name</th>
             <th>Email</th>
             <th>Teacher ID</th>
+            <th>Alias</th>
+
 
 
         </tr>
@@ -174,14 +176,15 @@ if(isset($_SESSION['User'])){
 if(isset($_SESSION['User'])){
 $dbserver = "localhost";
 $dbusername = "root";
-$password="Quincyombati2019";
+$password="";
 $dbname="timetable";
 
 $connect=mysqli_connect($dbserver,$dbusername,$password,$dbname);
-$user=$_SESSION['User'];
+
 // sql to view  records
 $sql = "SELECT *
-		FROM  user_teacher";
+		FROM  user_teacher 
+		WHERE email='".$_SESSION['User']."'";
 
 try
 {
@@ -190,7 +193,7 @@ try
     if($result->num_rows > 0)
     {
         while($row = $result->fetch_assoc()) {
-            echo "<tr><td>" . $row["username"]. "</td><td>" . $row["email"] . "</td><td>". $row["teacherid"]. "</td><td>";
+            echo "<tr><td>" . $row["username"]. "</td><td>" . $row["email"] . "</td><td>". $row["faculty_number"]. "</td><td>".$row["alias"]. "</td><td>";
         }
         echo "</table>";
     } else { echo "0 results"; }

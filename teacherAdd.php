@@ -3,7 +3,7 @@
 session_start();
 $dbserver = "localhost";
 $dbusername = "root";
-$password="Quincyombati2019";
+$password="";
 $dbname="timetable";
 
 $connect=mysqli_connect($dbserver,$dbusername,$password,$dbname);
@@ -11,7 +11,8 @@ $connect=mysqli_connect($dbserver,$dbusername,$password,$dbname);
 
 
 $Email 			= $_POST["Email"];
-$TeacherId 	= $_POST["teacherId"];
+$Alias 			= $_POST["alias"];
+$facultyNumber 	= $_POST["facultyNumber"];
 $Username 	= $_POST["Username"];
 $Password 		= $_POST["Password"];
 $deleted=0;
@@ -19,8 +20,8 @@ $deleted=0;
 
 $Password = md5($Password);
 
-$insert="INSERT INTO `user_teacher`(`email`, `teacherid`, `username`, `password`,deleted) VALUES 
- ('".$Email."','".$TeacherId."','".$Username."','".$Password."','".$deleted."')";
+$insert="INSERT INTO `user_teacher`(`email`,alias, `faculty_number`, `username`, `password`,deleted) VALUES 
+ ('".$Email."','".$Alias."','".$facultyNumber."','".$Username."','".$Password."','".$deleted."')";
 
 if(mysqli_query($connect,$insert)){
 

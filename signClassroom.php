@@ -6,27 +6,24 @@ $dbname="timetable";
 
 $connect=mysqli_connect($dbserver,$dbusername,$password,$dbname);
 
-$Email 			= $_POST["Email"];
-$email 			= $_POST["email"];
+$name 			= $_POST["name"];
+$CN    = $_POST["CN"];
 
 
 
+$sql="UPDATE classrooms SET name='$CN' WHERE name='$name'";
 
-
-
-
-$sql="UPDATE user_teacher SET email='$email' WHERE Email='$Email'";
 
 if(mysqli_query($connect,$sql)){
 
     echo "success";
-    header("Location: http://localhost/timetable/is/View_teacherdetails.php");
+    header("Location: http://localhost/timetable/is/View_Classroom.php");
 }
 else{
 
     echo "failure";
     echo "<br/>";
-    header("Location: http://localhost/timetable/is/edit_teacherdetails.php");
+    header("Location: http://localhost/timetable/is/editClassroom.php");
     echo mysqli_error($connect);
 }
 ?>

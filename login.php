@@ -1,39 +1,34 @@
-
 <?php
-session_start();
-$dbserver = "localhost";
-$dbusername = "root";
-$password="Quincyombati2019";
-$dbname="timetable";
+ $dbserver = "localhost";
+ $dbusername = "root";
+ $password="";
+ $dbname="qbooks";
+ 
+ $connect=mysqli_connect($dbserver,$dbusername,$password,$dbname);
 
-$connect=mysqli_connect($dbserver,$dbusername,$password,$dbname);
-
-$Email = $_POST["Email"];
+$Username = $_POST["Username"];
 $Password = $_POST["Password"];
 
 $Password = md5($Password);
-
+ 
 $sql="SELECT 
-		*
-		FROM `user_student` 
-		WHERE `email` = '$Email' AND `Password` = '$Password';";
+		`Username`, `Password` 
+		FROM `user` 
+		WHERE `Username` = '$Username' AND `Password` = '$Password';";
 
 try
 {
 	$result = mysqli_query($connect,$sql);
-
-	if(mysqli_fetch_assoc($result))
+	
+	if($result->num_rows > 0)
 	{
-		$_SESSION['User']=$_POST["Email"];
-		require_once  header("Location: http://localhost/timetable/is/Welcome.php");
+		echo "Login successful";
 
 	}
 	else
 	{
-		header("Location: iss.php? Invalid=Username or password is incorrect");
+		echo "Username or password is incorrect";
 	}
-
-
 }
 catch(exception $e)
 {
@@ -42,7 +37,5 @@ catch(exception $e)
 }
 
 
-
+	
 ?>
-
-

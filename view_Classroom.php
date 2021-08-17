@@ -60,8 +60,8 @@
 
         <div class="navbar-header">
             <?php
-            session_start();
 
+session_start();
             if(isset($_SESSION['admin'])){
                 ?>
                 <h3 style="font-size: 100%; color: ghostwhite;margin-top: 10px;">
@@ -211,7 +211,7 @@
         <div class="col-sm-4">
             <div class="page-header float-left">
                 <div class="page-title">
-                    <h1>View Teacher</h1>
+                    <h1>View Classroom</h1>
                 </div>
             </div>
         </div>
@@ -220,8 +220,8 @@
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
                         <li><a href="Admin.php">Dashboard</a></li>
-                        <li><a href="Admin.php">Teacher</a></li>
-                        <li class="active">View Teacher</li>
+                        <li><a href="Admin.php">Classroom</a></li>
+                        <li class="active">View Classroom</li>
                         <li><a href="admin_logout.php">Logout </a></li>
                     </ol>
                 </div>
@@ -230,10 +230,8 @@
     </div>
     <table>
         <tr>
-            <th>Faculty Number</th>
-            <th>Teacher Name</th>
-            <th>Alias</th>
-            <th>Email</th>
+            <th>Classroom Name</th>
+
 
 
 
@@ -266,7 +264,7 @@ $connect=mysqli_connect($dbserver,$dbusername,$password,$dbname);
 
 // sql to view  records
 $sql = "SELECT *
-		FROM  `user_teacher`
+		FROM  `classrooms`
         WHERE deleted=0;";
 
 try
@@ -276,8 +274,8 @@ try
     if($result->num_rows > 0)
     {
         while($row = $result->fetch_assoc()) {
-            echo "<tr><td>" . $row["faculty_number"]. "</td><td>" . $row["username"] . "</td><td>". $row["alias"]. "</td><td>"
-                . $row["email"]. "</td><tr>";
+            echo "<tr><td>" . $row["name"]. "</td><td>".
+                "</td><tr>";
         }
         echo "</table>";
     } else { echo "0 results"; }

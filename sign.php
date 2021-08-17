@@ -1,37 +1,34 @@
 <?php
-
-session_start();
 $dbserver = "localhost";
 $dbusername = "root";
-$password="Quincyombati2019";
+$password="";
 $dbname="timetable";
 
 $connect=mysqli_connect($dbserver,$dbusername,$password,$dbname);
 
-
-
 $Email 			= $_POST["Email"];
-$StudentID 	= $_POST["StudentID"];
-$ClassID 	= $_POST["ClassID"];
-$Username 	= $_POST["Username"];
-$Password 		= $_POST["Password"];
+$email 			= $_POST["email"];
+$studentid 		= $_POST["studentid"];
+$classID	=$_POST["class_id"];
+$username	=$_POST["username"];
 
 
-$Password = md5($Password);
 
-$insert="INSERT INTO `user_student`(`email`, `studentid`, `class_id`, `username`, `password`) VALUES 
- ('".$Email."','".$StudentID."','".$ClassID."','".$Username."','".$Password."')";
+$sql="UPDATE user_student SET username='$username' WHERE Email='$Email'";
+$sql="UPDATE user_student SET class_id='$classID' WHERE Email='$Email'";
+$sql="UPDATE user_student SET studentid='$studentid' WHERE Email='$Email'";
+$sql="UPDATE user_student SET email='$email' WHERE Email='$Email'";
 
-if(mysqli_query($connect,$insert)){
+if(mysqli_query($connect,$sql)){
 
-  $_SESSION['status']="Account has been registered. Please login";
-    header("Location: isl.php");
+    echo "success";
+    header("Location: http://localhost/timetable/is/View_Staff.php");
 }
 else{
 
     echo "failure";
     echo "<br/>";
+    header("Location: http://localhost/timetable/is/edit.php");
     echo mysqli_error($connect);
 }
-
 ?>
